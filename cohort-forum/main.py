@@ -36,7 +36,8 @@ class MainHandler(webapp2.RequestHandler):
 
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write("Hello World")
+        template = jinja_environment.get_template('templates/chat.html')
+        self.response.write(template.render())
 
 
 app = webapp2.WSGIApplication([
