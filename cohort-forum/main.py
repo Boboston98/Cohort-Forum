@@ -15,10 +15,16 @@
 # limitations under the License.
 #
 import webapp2
-
+import os
+import jinja2
+jinja_environment = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+logins = {
+    'Matthew': 'Matthew1234'
+}
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
