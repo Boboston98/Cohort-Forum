@@ -17,18 +17,24 @@
 import webapp2
 import os
 import jinja2
+from google.appengine.api import users 
+
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write("Hello")
+        self.response.write("Hello.")
 
 class ChatHandler(webapp2.RequestHandler):
-
     def get(self):
+        chatDict = {
+            'David': 'Back in my day we had values'
+
+        }
         self.response.write("Hello World")
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/chat',ChatHandler)
 ], debug=True)
