@@ -23,6 +23,11 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write("Hello")
 
+class ChatHandler(webapp2.RequestHandler):
+    def get(self):
+
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/chat',ChatHandler)
 ], debug=True)
