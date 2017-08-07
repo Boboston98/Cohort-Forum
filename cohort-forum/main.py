@@ -24,6 +24,7 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write("Hello")
 
 class ChatHandler(webapp2.RequestHandler):
+
     def get(self):
         self.response.write("Hello World")
 
