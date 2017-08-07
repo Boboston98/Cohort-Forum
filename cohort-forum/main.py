@@ -26,11 +26,15 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write("Hello.")
 
 class ChatHandler(webapp2.RequestHandler):
-
     def get(self):
+        chatDict = {
+            'David': 'Back in my day we had values'
+
+        }
         self.response.write("Hello World")
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/chat',ChatHandler)
 ], debug=True)
