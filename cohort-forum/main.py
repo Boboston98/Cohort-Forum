@@ -19,12 +19,9 @@ import os
 import jinja2
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
-logins = {
-    'Matthew': 'Matthew1234'
-}
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-
+        self.response.write("Hello")
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
