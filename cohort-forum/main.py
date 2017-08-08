@@ -37,6 +37,11 @@ class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/profile.html')
         self.response.write(template.render())
+        profile_dict ={
+
+
+        
+        }
 
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
