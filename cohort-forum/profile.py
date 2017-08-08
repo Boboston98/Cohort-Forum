@@ -7,3 +7,4 @@ class Profile(nbd.Model):
     cohort = nbd.StringProperty()
     grad_year = nbd.IntegerProperty()
     interests = nbd.StringProperty()
+    emailID = nbd.StringProperty()
