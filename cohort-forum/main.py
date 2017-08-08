@@ -30,7 +30,7 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             logout_link = users.create_logout_url('/')
             user_id = user.user_id()
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            greeting = ('Welcome, %s! (<a href="%s">LOGOUT</a>)' %
                 (user.nickname(), users.create_logout_url('/')))
         else:
             greeting = ('<a href="%s">Sign in or Register</a>.' %
