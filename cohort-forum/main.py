@@ -40,6 +40,8 @@ class ChatHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
 
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/chat',ChatHandler)
