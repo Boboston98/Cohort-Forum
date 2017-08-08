@@ -47,6 +47,8 @@ class ChatHandler(webapp2.RequestHandler):
         messages = []
         messages.append(self.request.get("user_message"))
 
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/chat',ChatHandler),
