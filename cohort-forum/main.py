@@ -18,14 +18,19 @@ import webapp2
 import os
 import jinja2
 from google.appengine.api import users
+from databases import Profile
+from databases import Messages
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
-            greeting = ('Welcome, %s! (<a href="%s">sign out</a>)' %
+            logout_link = users.create_logout_url('/')
+            user_id = user.user_id()
+            greeting = ('Welcome, %s! (<a href="%s">LOGOUT</a>)' %
                 (user.nickname(), users.create_logout_url('/')))
         else:
             greeting = ('<a href="%s">Sign in or Register</a>.' %
