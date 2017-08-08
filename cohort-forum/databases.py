@@ -1,14 +1,14 @@
-from google.appengine.ext import nbd
+from google.appengine.ext import ndb
 
-class Profile(nbd.Model):
-    name = nbd.StringProperty()
-    location = nbd.StringProperty()
-    profile = nbd.StringProperty()
-    cohort = nbd.StringProperty()
-    grad_year = nbd.IntegerProperty()
-    interests = nbd.StringProperty()
-    emailID = nbd.StringProperty()
+class Profile(ndb.Model):
+    name = ndb.StringProperty()
+    location = ndb.StringProperty()
+    profile = ndb.StringProperty()
+    cohort = ndb.StringProperty()
+    grad_year = ndb.IntegerProperty()
+    interests = ndb.StringProperty()
+    emailID = ndb.StringProperty()
 
-class Messages(nbd.Model):
-    user = StringProperty()
-    message = StringProperty()
+class Messages(ndb.Model):
+    user = ndb.StringProperty()
+    message = ndb.StringProperty()
