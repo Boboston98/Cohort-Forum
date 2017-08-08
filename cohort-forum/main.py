@@ -44,8 +44,12 @@ class ChatHandler(webapp2.RequestHandler):
         self.response.write(template.render())
     def post(self):
         template = jinja_environment.get_template('templates/chat.html')
-        messages = []
-        messages.append(self.request.get("user_message"))
+        m_list = []
+        m_list.append(self.request.get("user_message"))
+        messages = {
+        'first_message': m_list[0]
+        }
+        self.response.write(template.render(messages))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
