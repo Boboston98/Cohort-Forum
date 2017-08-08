@@ -18,8 +18,8 @@ import webapp2
 import os
 import jinja2
 from google.appengine.api import users
-from profile import Profile
-from messages import Messages
+from databases import Profile
+from databases import Messages
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
