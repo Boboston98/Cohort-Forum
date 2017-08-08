@@ -8,3 +8,7 @@ class Profile(nbd.Model):
     grad_year = nbd.IntegerProperty()
     interests = nbd.StringProperty()
     emailID = nbd.StringProperty()
+
+class Messages(nbd.Model):
+    user = StringProperty()
+    message = StringProperty()
