@@ -33,16 +33,24 @@ class MainHandler(webapp2.RequestHandler):
 
         self.response.write('<html><body>%s</body></html>' % greeting)
 
+class ProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/profile.html')
+        self.response.write(template.render())
 
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
         self.response.write(template.render())
-
+    def post(self):
+        template = jinja_environment.get_template('templates/chat.html')
+        messages = []
+        messages.append(self.request.get("user_message"))
 
 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/chat',ChatHandler)
+    ('/chat',ChatHandler),
+    ('/profile',ProfileHandler)
 ], debug=True)
