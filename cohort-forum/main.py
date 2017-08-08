@@ -39,14 +39,7 @@ class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/profile.html')
         self.response.write(template.render())
-<<<<<<< HEAD
         
-=======
-        profile = {"David":"Green", "Austin":"Black","Jose":"Burgundy", "Matthew":"Blue"
-        }
-
-
->>>>>>> c066699e4e66d9917db99da3c666198d449419fb
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
