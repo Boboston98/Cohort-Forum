@@ -1,6 +1,6 @@
 from google.appengine.ext import nbd
 
-class profile(nbd.Model):
+class Profile(nbd.Model):
     name = nbd.StringProperty()
     location = nbd.StringProperty()
     profile = nbd.StringProperty()

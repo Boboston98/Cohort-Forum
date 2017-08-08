@@ -19,6 +19,7 @@ import os
 import jinja2
 from google.appengine.api import users
 from profile import Profile
+from messages import Messages
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -40,7 +41,7 @@ class ProfileHandler(webapp2.RequestHandler):
         self.response.write(template.render())
         profile = {"David":"Green", "Austin":"Black","Jose":"Burgundy", "Matthew":"Blue"
         }
-        
+
 
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
