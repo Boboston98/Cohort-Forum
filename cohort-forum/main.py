@@ -30,19 +30,25 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             logout_link = users.create_logout_url('/')
             user_id = user.user_id()
-            greeting = ('Welcome, %s! (<a href="%s">LOGOUT</a>)' %
-                (user.nickname(), users.create_logout_url('/')))
+            profile_query = Profile.query(Profile.emailID == user_id)
+            profile = profile_query.get()
+            if profile is not None:
+                self.redirect('/chat')
+            else:
+                self.redirect('/profile')
+
+            #greeting = ('Welcome, %s! (<a href="%s">LOGOUT</a>)' %
+            #    (user.nickname(), users.create_logout_url('/')))
         else:
             greeting = ('<a href="%s">Sign in or Register</a>.' %
                 users.create_login_url('/'))
 
-        self.response.write('<html><body>%s</body></html>' % greeting)
+            self.response.write('<html><body>%s</body></html>' % greeting)
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/profile.html')
         self.response.write(template.render())
-
     def post(self):
         user = users.get_current_user()
         user_id = user.user_id()
@@ -55,9 +61,6 @@ class ProfileHandler(webapp2.RequestHandler):
         pic_url = self.request.get('image')
         new_profile = Profile(name = name, location = currloc, program = prgm, cohort = cohort,
         grad_year = int(year), interests = interests, emailID = user_id, url = pic_url)
-        key = new_profile.put()
-        self.redirect('/')
-
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
