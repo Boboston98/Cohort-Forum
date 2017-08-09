@@ -1,35 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title> Cohort Connect </title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+<html lang = "en-US">
+ <head>
+ <meta charset = "UTF-8">
+ <title>Cohort Connect</title>
+ <script type = "text/javascript">
 
-    <p>
-      <center> Welcome to the chat! </center>
-      <br><center> Feel free to share with others <center>
-    </p>
+  function sayHi(){
+  var txtName = document.getElementById("txtName");
+  var txtOutput = document.getElementById("txtOutput");
+  var name = txtName.value;
+  txtOutput.value = "Hi there, " + name + "!"
+  } // end sayHi
+ </script>
 
-    <p>
-      <textarea disabled style='border-color:red; resize:none' rows='35' cols='150'>
+ <link rel = "stylesheet"
+   type = "text/css"
+   href = "textBoxes.css" />
 
+ </head>
+ <body>
 
+   <p>
+     <center> Welcome to the chat! </center>
+     <br><center> Feel free to share with others <center>
+   </p>
 
+ <form action = >
+    <textarea disabled style='border-color:red; resize:none' rows='35' cols='150' id ='txtOutput'>
 
+    </textarea>
+ </form>
 
-      </textarea>
-    </p>
+ <form method='post'>
+   Message: <input type=text size= '50' style='border-color:red; height: 40px' name='user_message' id = "txtName">
+   <input type = "button"
+     value = "Send"
+     onclick = "sayHi()"/>
+ </form>
 
-    <p>
-      <form method='post'>
-        Message: <input type=text size= '50' style='border-color:red; height: 40px' name='user_message'>
-        <button type='submit'>
-          Send
-        </button>
-
-      </form>
-
-  </body>
+ </body>
 </html>
