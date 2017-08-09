@@ -62,7 +62,7 @@ class ProfileHandler(webapp2.RequestHandler):
         new_profile = Profile(name = name, location = currloc, program = prgm, cohort = cohort,
         grad_year = int(year), interests = interests, emailID = user_id, url = pic_url)
         key = new_profile.put()
-        self.redirect('/')
+        self.redirect('/chat')
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
