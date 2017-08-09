@@ -52,7 +52,7 @@ class ProfileHandler(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
         user_id = user.user_id()
-        name = self.request.get('Name')
+        name = self.request.get('name')
         currloc = self.request.get('current_location')
         prgm = self.request.get('program')
         cohort = self.request.get('cohort')
@@ -61,6 +61,11 @@ class ProfileHandler(webapp2.RequestHandler):
         pic_url = self.request.get('image')
         new_profile = Profile(name = name, location = currloc, program = prgm, cohort = cohort,
         grad_year = int(year), interests = interests, emailID = user_id, url = pic_url)
+<<<<<<< HEAD
+=======
+        key = new_profile.put()
+        self.redirect('/')
+>>>>>>> 11740e6860817059d8353bbfad676d08f4894db4
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
