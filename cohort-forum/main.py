@@ -42,7 +42,7 @@ class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/profile.html')
         self.response.write(template.render())
-<<<<<<< HEAD
+
     def post(self):
         user = users.get_current_user()
         user_id = user.user_id()
@@ -57,9 +57,7 @@ class ProfileHandler(webapp2.RequestHandler):
         grad_year = int(year), interests = interests, emailID = user_id, url = pic_url)
         key = new_profile.put()
         self.redirect('/')
-=======
 
->>>>>>> 5dde653b7d1855a4b25deffab73e70076861512f
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
