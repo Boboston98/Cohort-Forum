@@ -61,15 +61,8 @@ class ProfileHandler(webapp2.RequestHandler):
         pic_url = self.request.get('image')
         new_profile = Profile(name = name, location = currloc, program = prgm, cohort = cohort,
         grad_year = int(year), interests = interests, emailID = user_id, url = pic_url)
-<<<<<<< HEAD
-=======
         key = new_profile.put()
-<<<<<<< HEAD
-        self.redirect('/chat')
-=======
         self.redirect('/')
->>>>>>> 11740e6860817059d8353bbfad676d08f4894db4
->>>>>>> d3d7695073a562df50da47b99eaa5dc64ac87dca
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
