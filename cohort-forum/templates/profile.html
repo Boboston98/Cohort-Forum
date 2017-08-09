@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <meta charset="utf-8">
     <title>Profile</title>
   </head>
   <body>
+
+    <script type="text/javascript">
+
+    function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                  $('#blah')
+                      .attr('src', e.target.result)
+                      .width(150)
+                      .height(200);
+              };
+
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
+    </script>
+
     <!-- <h2>Profile picture</h2>
     <p>enter url to profile pic: <input type="text" name="image" value=""></p>  -->
     <center><h1>Make your profile</h1></center>
     <h1>Profile picture</h1>
     <form action="" method="post">
-    <p>Enter url to profile pic: <input type="text" name="image" value=""> <input type="Submit"  value="Submit"></p>
-    <center><p>Enter your full name: <input type="text" name="name" value=""></p>
+    <center><input type='file' onchange="readURL(this);" />
+    <br><img id="blah" src="#" alt="Your upload"/>
+    <p>Enter your full name: <input type="text" name="name" value=""></p>
     <p>Your current location: <input type="text" name="current_location" value=""></p>
     <p>Enter your program: <input type="text" name="program" value=""></p>
     <p>Enter your Cohort: <input type="text" name="cohort" value=""></p>
