@@ -22,9 +22,14 @@
      <center> Welcome to the chat! </center>
      <br><center> Feel free to share with others <center>
    </p>
-
  <form action = >
     <textarea disabled style='border-color:red; resize:none' rows='35' cols='150' >
+
+      {% for item in list %}
+             {{ item }}
+             <br>
+         {% endfor %}
+
        </textarea>
  </form>
 
