@@ -110,7 +110,11 @@ class ChatHandler(webapp2.RequestHandler):
             chat_list.append(chat_item.user+ " : "+chat_item.message)
         for item in chat_list:
             print(item)
-        self.response.write(template.render())
+        print(chat_list)
+        template_variables ={
+            'list': chat_list
+        }
+        self.response.write(template.render(chat_list))
 class ShowHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/showprofile.html')
