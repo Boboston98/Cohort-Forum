@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <meta charset="utf-8">
+    <title>Profile</title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+    function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                  $('#blah')
+                      .attr('src', e.target.result)
+                      .width(200)
+                      .height(200);
+              };
+
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
+    </script>
+
+    <!-- <h2>Profile picture</h2>
+    <p>enter url to profile pic: <input type="text" name="image" value=""></p>  -->
+    <center><h1>Create/edit your profile</h1></center>
+    <!-- Austin changed here, if you got a problem, fight me in the streets -->
+    <!-- <left>
+      <input type="button" value='Chat'
+     onclick="window.location='/chat';" />
+   </left> -->
+
+    <h1>Profile picture</h1>
+    <form action="" method="post">
+    <input type='file' onchange="readURL(this);" />
+    <br><img id="blah" name = "image" src="#" alt="Your upload" />
+    <center><p>Enter your full name: <input type="text" name="name" value="" required></p>
+    <p>Your current location: <input type="text" name="current_location" value="" required></p>
+    <p>Enter your program: <input type="text" name="program" value="" required></p>
+    <p>Enter your Cohort: <input type="text" name="cohort" value="" required></p>
+    <p>Graduation year: <input type="text" name="year" value="" required></p>
+    <p>What are your interests: <input type="text" name="interest" value="" required></p>
+    <p><input type="Submit" value="Submit"></center></p>
+  </form>
+  </body>
+  <style>
+  body {
+     -webkit-animation: colorchange 60s infinite;
+     animation: colorchange 60s infinite;
+  }
+
+
+  @-webkit-keyframes colorchange {
+
+       0% {background: #33FFF3 ;}
+      10% {background: #1E90FF ;}
+      20% {background: #6495ED ;}
+      30% {background: #9370DB ;}
+      40% {background: #EE82EE ;}
+      50% {background: #800020 ;}
+      40% {background: #FF0000 ;}
+      50% {background: #FF4500 ;}
+      60% {background: #BDB76B ;}
+      70% {background: #FFD700 ;}
+      80% {background: #EE82EE ;}
+      90% {background: #1E90FF ;}
+     100% {background: #33FFF3 ;}
+  }
+
+
+  @keyframes colorchange {
+
+    0% {background: #33FFF3 ;}
+   10% {background: #1E90FF ;}
+   20% {background: #6495ED ;}
+   30% {background: #9370DB ;}
+   40% {background: #EE82EE ;}
+   50% {background: #800020 ;}
+   40% {background: #FF0000 ;}
+   50% {background: #FF4500 ;}
+   60% {background: #BDB76B ;}
+   70% {background: #FFD700 ;}
+   80% {background: #EE82EE ;}
+   90% {background: #1E90FF ;}
+  100% {background: #33FFF3 ;}
+  }
+
+  </style>
+</html>
