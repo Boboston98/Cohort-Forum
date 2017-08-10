@@ -25,14 +25,12 @@
 
  <form action = >
     <textarea disabled style='border-color:red; resize:none' rows='35' cols='150' >
-    {% for messages in Messages %}
-    {{ message }}
-    {% endfor %}    </textarea>
+       </textarea>
  </form>
 
  <form method='post'>
    Message: <input type=text size= '50' style='border-color:red; height: 40px' name='user_message' id = "txtName">
-   <input type = "button"
+   <input type = "Submit"
      value = "Send"
      onclick = "sayHi()"/>
  </form>

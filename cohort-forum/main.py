@@ -24,7 +24,6 @@ from databases import Messages
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-m_list = []
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -52,6 +51,7 @@ class ProfileHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/profile.html')
         self.response.write(template.render())
     def post(self):
+
         user = users.get_current_user()
         user_id = user.user_id()
         name = self.request.get('name')
@@ -87,14 +87,30 @@ class ChatHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('templates/chat.html')
         self.response.write(template.render())
     def post(self):
+        print("*********************test")
+        chat_list = []
         template = jinja_environment.get_template('templates/chat.html')
         # for x in range(0,m_list):
         #     messages = {
         #     str(x): m_list[x]
         #     }
+        user = users.get_current_user()
+        user_id = user.user_id()
+        print(user_id)
+        profile_query = Profile.query(Profile.emailID == user_id)
+        profile = profile_query.get()
+        name = profile.name
+        chat_message = self.request.get('user_message')
+        new_message =  Messages(user = name, message = chat_message)
+        key = new_message.put()
+
         message_query = Messages.query()
-        messages = message_query.get()
-        self.response.write(template.render(messages = m_list))
+        messages = message_query.fetch()
+        for chat_item in messages:
+            chat_list.append(chat_item.user+ " : "+chat_item.message)
+        for item in chat_list:
+            print(item)
+        self.response.write(template.render())
 class ShowHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/showprofile.html')
