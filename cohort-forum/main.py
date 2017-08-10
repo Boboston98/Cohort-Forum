@@ -65,7 +65,23 @@ class ProfileHandler(webapp2.RequestHandler):
         grad_year = int(year), interests = interests, emailID = user_id, url = pic_url)
         key = new_profile.put()
         self.redirect('/chat')
-
+class EditProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/editprofile.html')
+        self.response.write(template.render())
+    def post(self):
+        user = users.get_current_user()
+        user_id = user.user_id()
+        profile_query = Profile.query(Profile.emailID == user_id)
+        profile = profile_query.get()
+        profile.name = self.request.get('name')
+        profile.program = self.request.get('program')
+        profile.location = self.request.get('current_location')
+        profile.cohort = self.request.get('cohort')
+        profile.grad_year = self.request.get('year')
+        profile.interest = self.request.get('interest')
+        profile.url = self.request.get('image')
+        self.redirect('/chat')
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
@@ -100,5 +116,6 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/chat',ChatHandler),
     ('/profile',ProfileHandler),
-    ('/showprofile',ShowHandler)
+    ('/showprofile',ShowHandler),
+    ('/editprofile',EditProfileHandler)
 ], debug=True)
