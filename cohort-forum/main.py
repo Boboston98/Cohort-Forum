@@ -77,9 +77,26 @@ class ChatHandler(webapp2.RequestHandler):
             str(x): m_list[x]
             }
         self.response.write(template.render(messages))
-
+class ShowHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/showprofile.html')
+        user = users.get_current_user()
+        user_id = user.user_id()
+        profile_query = Profile.query(Profile.emailID == user_id)
+        profile = profile_query.get()
+        template_variables = {
+            'name': profile.name,
+            'location': profile.location,
+            'program': profile.program,
+            'cohort': profile.cohort,
+            'grad_year': profile.grad_year,
+            'interests': profile.interests,
+            'url': profile.url
+             }
+        self.response.write(template.render(template_variables))
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/chat',ChatHandler),
-    ('/profile',ProfileHandler)
+    ('/profile',ProfileHandler),
+    ('/showprofile',ShowHandler)
 ], debug=True)

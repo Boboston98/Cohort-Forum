@@ -9,18 +9,18 @@
     var txtName = document.getElementById("txtName");
     var txtOutput = document.getElementById("txtOutput");
     var comment = txtName.value;
-    txtOutput.value = comment
+    //This is where you an tag on info to the user's comments, ie. user_name, Cohort, and program
+    txtOutput.value = 'User: ' + comment
     } // end sayHi
  </script>
 
  </head>
  <body>
-
+   <input type="button" value='Profile'
+    onclick="window.location='/profile';" />
    <p>
      <center> Welcome to the chat! </center>
      <br><center> Feel free to share with others <center>
-       <input type="button" value='Profile'
-        onclick="window.location='/profile';" />
    </p>
 
  <form action = >

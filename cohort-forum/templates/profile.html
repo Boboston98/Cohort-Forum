@@ -30,11 +30,17 @@
 
     <!-- <h2>Profile picture</h2>
     <p>enter url to profile pic: <input type="text" name="image" value=""></p>  -->
-    <center><h1>Make your profile</h1></center>
+    <center><h1>Create/edit your profile</h1></center>
+    <!-- Austin changed here, if you got a problem, fight me in the streets -->
+    <left>
+      <input type="button" value='Chat'
+     onclick="window.location='/chat';" />
+   </left>
+
     <h1>Profile picture</h1>
     <form action="" method="post">
     <input type='file' onchange="readURL(this);" />
-    <br><img id="blah" src="#" alt="Your upload"/>
+    <br><img id="blah" name = "image" src="#" alt="Your upload"/>
     <center><p>Enter your full name: <input type="text" name="name" value=""></p>
     <p>Your current location: <input type="text" name="current_location" value=""></p>
     <p>Enter your program: <input type="text" name="program" value=""></p>
