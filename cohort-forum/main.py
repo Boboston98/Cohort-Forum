@@ -63,6 +63,7 @@ class ProfileHandler(webapp2.RequestHandler):
         grad_year = int(year), interests = interests, emailID = user_id, url = pic_url)
         key = new_profile.put()
         self.redirect('/chat')
+        
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
