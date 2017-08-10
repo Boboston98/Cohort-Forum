@@ -11,7 +11,7 @@
     var comment = txtName.value;
     //This is where you an tag on info to the user's comments, ie. user_name, Cohort, and program
     txtOutput.value = 'User: ' + comment
-    } // end sayHi
+  } // end sayHi
  </script>
 
  </head>
@@ -24,9 +24,10 @@
    </p>
 
  <form action = >
-    <textarea disabled style='border-color:red; resize:none' rows='35' cols='150' id ='txtOutput'>
-
-    </textarea>
+    <textarea disabled style='border-color:red; resize:none' rows='35' cols='150' >
+    {% for messages in Messages %}
+    {{ message }}
+    {% endfor %}    </textarea>
  </form>
 
  <form method='post'>

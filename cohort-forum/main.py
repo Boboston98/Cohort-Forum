@@ -24,6 +24,8 @@ from databases import Messages
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
+m_list = []
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -70,13 +72,13 @@ class ChatHandler(webapp2.RequestHandler):
         self.response.write(template.render())
     def post(self):
         template = jinja_environment.get_template('templates/chat.html')
-        m_list = []
-        m_list.append(self.request.get("user_message"))
-        for x in range(0,m_list):
-            messages = {
-            str(x): m_list[x]
-            }
-        self.response.write(template.render(messages))
+        # for x in range(0,m_list):
+        #     messages = {
+        #     str(x): m_list[x]
+        #     }
+        message_query = Messages.query()
+        messages = message_query.get()
+        self.response.write(template.render(messages = m_list))
 class ShowHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/showprofile.html')
