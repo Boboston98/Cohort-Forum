@@ -45,7 +45,9 @@ class MainHandler(webapp2.RequestHandler):
                 users.create_login_url('/'))
 
             self.response.write('<html><body>%s</body></html>' % greeting)
-
+        def post(self):
+            greeting = ('Welcome, %s! (<a href="%s">LOGOUT</a>)' %
+            (user.nickname(), users.create_logout_url('/')))
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/profile.html')
