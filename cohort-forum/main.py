@@ -65,7 +65,7 @@ class ProfileHandler(webapp2.RequestHandler):
         new_profile = Profile(name = name, location = currloc, program = prgm, cohort = cohort,
         grad_year = int(year), interests = interests, emailID = user_id, url = pic_url,about = about)
         key = new_profile.put()
-        self.redirect('/chat')
+        self.redirect('/logout')
 class EditProfileHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/editprofile.html')
@@ -109,6 +109,7 @@ class ChatHandler(webapp2.RequestHandler):
             'list': chat_list
         }
         self.response.write(template.render(template_variables))
+
     def post(self):
         print("*********************test")
         chat_list = []
@@ -138,6 +139,10 @@ class ChatHandler(webapp2.RequestHandler):
             'list': chat_list
         }
         self.response.write(template.render(template_variables))
+class logoutHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/logout.html')
+        self.response.write(template.render())
 class ShowHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/showprofile.html')
@@ -160,5 +165,6 @@ app = webapp2.WSGIApplication([
     ('/chat',ChatHandler),
     ('/profile',ProfileHandler),
     ('/showprofile',ShowHandler),
-    ('/editprofile',EditProfileHandler)
+    ('/editprofile',EditProfileHandler),
+    ('/logout',logoutHandler)
 ], debug=True)
