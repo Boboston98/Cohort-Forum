@@ -9,7 +9,7 @@ class Profile(ndb.Model):
     interests = ndb.StringProperty()
     emailID = ndb.StringProperty()
     url = ndb.StringProperty()
-    about = ndbStringProperty()
+    about = ndb.StringProperty()
 class Messages(ndb.Model):
     user = ndb.StringProperty()
     message = ndb.StringProperty()
