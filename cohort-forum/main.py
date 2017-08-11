@@ -61,8 +61,9 @@ class ProfileHandler(webapp2.RequestHandler):
         year = self.request.get('year')
         interests = self.request.get('interest')
         pic_url = self.request.get('image')
+        about = self.request.get('about')
         new_profile = Profile(name = name, location = currloc, program = prgm, cohort = cohort,
-        grad_year = int(year), interests = interests, emailID = user_id, url = pic_url)
+        grad_year = int(year), interests = interests, emailID = user_id, url = pic_url,about = about)
         key = new_profile.put()
         self.redirect('/chat')
 class EditProfileHandler(webapp2.RequestHandler):
@@ -81,6 +82,7 @@ class EditProfileHandler(webapp2.RequestHandler):
         profile.grad_year = self.request.get('year')
         profile.interest = self.request.get('interest')
         profile.url = self.request.get('image')
+        profile.about = self.request.get('about')
         self.redirect('/chat')
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
