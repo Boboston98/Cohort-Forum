@@ -85,7 +85,28 @@ class EditProfileHandler(webapp2.RequestHandler):
 class ChatHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/chat.html')
-        self.response.write(template.render())
+        chat_list = []
+        user = users.get_current_user()
+        user_id = user.user_id()
+        print(user_id)
+        profile_query = Profile.query(Profile.emailID == user_id)
+        profile = profile_query.get()
+        name = profile.name
+        chat_message = self.request.get('user_message')
+        new_message =  Messages(user = name, message = chat_message)
+        key = new_message.put()
+
+        message_query = Messages.query()
+        messages = message_query.fetch()
+        for chat_item in messages:
+            chat_list.append(chat_item.user+ " : "+chat_item.message)
+        for item in chat_list:
+            print(item)
+        print(chat_list)
+        template_variables ={
+            'list': chat_list
+        }
+        self.response.write(template.render(template_variables))
     def post(self):
         print("*********************test")
         chat_list = []
