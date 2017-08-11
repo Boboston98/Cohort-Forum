@@ -16,8 +16,14 @@
 
  </head>
  <body>
+   <left>
    <input type="button" value='Profile'
     onclick="window.location='/showprofile';" />
+    <right>
+      <input type="button" value='login'
+     onclick="window.location='/login';" />
+   </right>
+  </left>
    <p>
      <center> Welcome to the chat! </center>
      <br><center> Feel free to share with others <center>
@@ -27,7 +33,7 @@
 
       {% for item in list %}
              {{ item }}
-              
+
          {% endfor %}
 
        </textarea>
