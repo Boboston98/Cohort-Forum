@@ -93,7 +93,6 @@ class ChatHandler(webapp2.RequestHandler):
         print(user_id)
         profile_query = Profile.query(Profile.emailID == user_id)
         profile = profile_query.get()
-        print(profile)
         name = profile.name
         chat_message = self.request.get('user_message')
         new_message =  Messages(user = name, message = chat_message)
